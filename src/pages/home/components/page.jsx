@@ -1,29 +1,52 @@
-import Navigation from "./components/Navigation";
-import HeroSection from "./components/HeroSection";
-import AboutSection from "./components/AboutSection";
-import ThothTechSection from "./components/ThothTechSection";
-import TechStackSection from "./components/TechStackSection";
-import ProjectsSection from "./components/ProjectsSection";
-import CertificationsSection from "./components/CertificationsSection";
-import NicheSection from "./components/NicheSection";
-import TestimonialsSection from "./components/TestimonialsSection";
-import ProcessSection from "./components/ProcessSection";
-import ContactSection from "./components/ContactSection";
+import { ErrorBoundary } from "../../../components/ErrorBoundary";
+import Navigation from "./Navigation";
+import HeroSection from "./HeroSection";
+import AboutSection from "./AboutSection";
+import ThothTechSection from "./ThothTechSection";
+import TechStackSection from "./TechStackSection";
+import ProjectsSection from "./ProjectsSection";
+import CertificationsSection from "./CertificationsSection";
+import NicheSection from "./NicheSection";
+import TestimonialsSection from "./TestimonialsSection";
+import ProcessSection from "./ProcessSection";
+import ContactSection from "./ContactSection";
 
 export default function Home() {
   return (
     <main className="relative w-full bg-editorial-bg text-editorial-text overflow-x-hidden">
-      <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <ThothTechSection />
-      <TechStackSection />
-      <ProjectsSection />
-      <CertificationsSection />
-      <NicheSection />
-      <TestimonialsSection />
-      <ProcessSection />
-      <ContactSection />
+      <ErrorBoundary name="Navigation">
+        <Navigation />
+      </ErrorBoundary>
+      <ErrorBoundary name="HeroSection">
+        <HeroSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="AboutSection">
+        <AboutSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="ThothTechSection">
+        <ThothTechSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="TechStackSection">
+        <TechStackSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="ProjectsSection">
+        <ProjectsSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="CertificationsSection">
+        <CertificationsSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="NicheSection">
+        <NicheSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="TestimonialsSection">
+        <TestimonialsSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="ProcessSection">
+        <ProcessSection />
+      </ErrorBoundary>
+      <ErrorBoundary name="ContactSection">
+        <ContactSection />
+      </ErrorBoundary>
     </main>
   );
 }

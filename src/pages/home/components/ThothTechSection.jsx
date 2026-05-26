@@ -109,7 +109,7 @@ export default function ThothTechSection() {
         <div ref={brandRef} className="mb-16 md:mb-24">
           <h2
             className="font-display text-editorial-text leading-[0.9] tracking-wide"
-            style={{ fontSize: "clamp(4rem, 12vw, 10rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 12vw, 10rem)" }}
           >
             THOTHTECH
           </h2>

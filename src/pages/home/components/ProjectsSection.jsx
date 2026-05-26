@@ -7,86 +7,56 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectsSection() {
   const sectionRef = useRef(null);
-  const triggerRef = useRef(null);
-  const trackRef = useRef(null);
-  const progressRef = useRef(null);
   const headingRef = useRef(null);
+  const progressRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Heading animation
-      gsap.fromTo(
-        headingRef.current,
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 80%",
-          },
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // Heading animation - animate TO final state
+    if (headingRef.current) {
+      gsap.to(headingRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 80%",
         },
-      );
-
-      // Horizontal scroll (only on desktop)
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 769px)", () => {
-        const track = trackRef.current;
-        if (!track) return;
-
-        const panels = track.querySelectorAll(".project-panel");
-        const totalWidth = track.scrollWidth - window.innerWidth;
-
-        const scrollTween = gsap.to(track, {
-          x: -totalWidth,
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: "top top",
-            end: () => `+=${totalWidth}`,
-            pin: true,
-            scrub: 1,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              if (progressRef.current) {
-                gsap.set(progressRef.current, { scaleX: self.progress });
-              }
-            },
-          },
-        });
-
-        // Panel entrance animations
-        panels.forEach((panel) => {
-          gsap.fromTo(
-            panel,
-            { opacity: 0.6, scale: 0.95 },
-            {
-              opacity: 1,
-              scale: 1,
-              duration: 0.5,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: panel,
-                containerAnimation: scrollTween,
-                start: "left 90%",
-                end: "left 50%",
-                scrub: true,
-              },
-            },
-          );
-        });
-
-        return () => {
-          mm.revert();
-        };
       });
-    }, sectionRef);
+    }
 
-    return () => ctx.revert();
+    // Stagger project panels
+    const panels = section.querySelectorAll(".project-panel");
+    panels.forEach((panel, i) => {
+      gsap.to(panel, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: panel,
+          start: "top 85%",
+        },
+      });
+    });
+
+    // Progress bar
+    if (progressRef.current) {
+      gsap.to(progressRef.current, {
+        scaleX: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1,
+        },
+      });
+    }
   }, []);
 
   return (
@@ -96,7 +66,11 @@ export default function ProjectsSection() {
       className="relative w-full overflow-hidden"
     >
       {/* Heading outside pinned area */}
-      <div ref={headingRef} className="py-16 md:py-24 px-6 md:px-10 lg:px-16">
+      <div
+        ref={headingRef}
+        className="py-16 md:py-24 px-6 md:px-10 lg:px-16"
+        style={{ opacity: 0, transform: "translateY(30px)" }}
+      >
         <div className="w-full max-w-[1400px] mx-auto">
           <div className="flex items-center gap-4 mb-8">
             <span className="font-mono text-sm text-editorial-amber tracking-wider">
@@ -125,62 +99,61 @@ export default function ProjectsSection() {
         />
       </div>
 
-      {/* Pinned horizontal scroll container */}
-      <div ref={triggerRef} className="relative overflow-hidden">
-        <div ref={trackRef} className="flex w-max">
+      {/* Projects grid */}
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`project-panel w-screen min-w-[100vw] md:min-w-[80vw] lg:min-w-[70vw] min-h-[80vh] flex items-center ${project.bgClass} px-6 md:px-12 lg:px-20 py-16 md:py-24`}
+              className={`project-panel ${project.bgClass} p-8 md:p-12 border border-editorial-amber/10`}
+              style={{ opacity: 0, transform: "translateY(60px)" }}
             >
-              <div className="w-full max-w-[900px]">
-                <span className="font-mono text-xs text-editorial-amber tracking-wider mb-4 block">
-                  PROJECT 0{index + 1}
-                </span>
-                <h3
-                  className="font-display text-editorial-text leading-[0.95] tracking-wide mb-4"
-                  style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
-                >
-                  {project.name}
-                </h3>
-                <p className="font-mono text-sm text-editorial-amber mb-6 tracking-wider">
-                  {project.role}
-                </p>
-                <p className="font-body text-lg md:text-xl text-editorial-text/70 leading-relaxed mb-8 max-w-[600px]">
-                  {project.description}
-                </p>
+              <span className="font-mono text-xs text-editorial-amber tracking-wider mb-4 block">
+                PROJECT 0{index + 1}
+              </span>
+              <h3
+                className="font-display text-editorial-text leading-[0.95] tracking-wide mb-4"
+                style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+              >
+                {project.name}
+              </h3>
+              <p className="font-mono text-sm text-editorial-amber mb-6 tracking-wider">
+                {project.role}
+              </p>
+              <p className="font-body text-lg text-editorial-text/70 leading-relaxed mb-8">
+                {project.description}
+              </p>
 
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {project.stack.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="font-mono text-xs text-editorial-text/50 border border-editorial-text/20 px-3 py-1"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Outcome */}
-                <div className="border-l-2 border-editorial-amber pl-4 mb-8">
-                  <p className="font-body text-lg md:text-xl text-editorial-text italic">
-                    {project.outcome}
-                  </p>
-                </div>
-
-                {/* CTA */}
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 font-mono text-sm text-editorial-amber tracking-wider group cursor-pointer"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <span>View Project</span>
-                  <span className="transition-transform duration-300 group-hover:translate-x-2">
-                    →
+              {/* Tech stack */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {project.stack.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="font-mono text-xs text-editorial-text/50 border border-editorial-text/20 px-3 py-1"
+                  >
+                    {tech}
                   </span>
-                </a>
+                ))}
               </div>
+
+              {/* Outcome */}
+              <div className="border-l-2 border-editorial-amber pl-4 mb-8">
+                <p className="font-body text-lg text-editorial-text italic">
+                  {project.outcome}
+                </p>
+              </div>
+
+              {/* CTA */}
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 font-mono text-sm text-editorial-amber tracking-wider group cursor-pointer"
+                onClick={(e) => e.preventDefault()}
+              >
+                <span>View Project</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+              </a>
             </div>
           ))}
         </div>

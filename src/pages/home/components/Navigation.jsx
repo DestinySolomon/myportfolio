@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import thothLogo from "../../../assets/thothtech_logo.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -57,10 +58,11 @@ export default function Navigation() {
   return (
     <nav
       ref={navRef}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      style={{ zIndex: 9999 }}
+      className={`fixed top-0 left-0 w-full transition-all duration-500 bg-editorial-bg/80 backdrop-blur-sm border-b ${
         isVisible
-          ? "bg-editorial-bg/95 backdrop-blur-sm border-b border-editorial-amber/20"
-          : "bg-transparent pointer-events-none"
+          ? "border-editorial-amber/20 opacity-100"
+          : "border-editorial-amber/10 opacity-90"
       }`}
     >
       <div className="w-full px-6 md:px-10 py-4 flex items-center justify-between">
@@ -70,9 +72,9 @@ export default function Navigation() {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="font-mono text-xs tracking-widest text-editorial-amber pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer inline-flex items-center"
         >
-          D.S.O
+          <img src={thothLogo} alt="ThothTech" className="h-6 logo" />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (

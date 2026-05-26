@@ -12,8 +12,18 @@ export default function ContactSection() {
   const ctaRef = useRef(null);
   const socialsRef = useRef(null);
   const [emailTyped, setEmailTyped] = useState("");
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   const email = "destiny@thothtech.com";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -152,25 +162,25 @@ export default function ContactSection() {
             <i className="ri-phone-line text-editorial-amber text-sm" />
           </div>
           <a
-            href="tel:+2348034567890"
+            href="tel:+2347087766823"
             className="font-mono text-lg md:text-xl text-editorial-text/80 tracking-wider transition-colors duration-300 hover:text-editorial-amber cursor-pointer whitespace-nowrap"
           >
-            +234 803 456 7890
+            +234 708 776 6823
           </a>
         </div>
 
         {/* WhatsApp CTA */}
         <div className="mb-8">
           <a
-            href="https://wa.me/2348034567890?text=Hi%20Destiny%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20connect."
+            href="https://wa.me/2347087766823?text=Hi%20Destiny%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20to%20connect."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 border border-editorial-green px-6 py-3 transition-all duration-300 hover:bg-editorial-green/10 cursor-pointer whitespace-nowrap"
+            className="inline-flex items-center gap-3 border border-emerald-400 px-6 py-3 transition-all duration-300 hover:bg-emerald-400/10 cursor-pointer whitespace-nowrap"
           >
             <div className="w-5 h-5 flex items-center justify-center">
-              <i className="ri-whatsapp-line text-editorial-green text-base" />
+              <i className="ri-whatsapp-line text-emerald-400 text-base" />
             </div>
-            <span className="font-mono text-sm text-editorial-green tracking-wider">
+            <span className="font-mono text-sm text-emerald-400 tracking-wider">
               Chat on WhatsApp
             </span>
           </a>
@@ -196,11 +206,14 @@ export default function ContactSection() {
         </div>
 
         {/* Social links */}
-        <div ref={socialsRef} className="flex flex-wrap gap-6 md:gap-8">
+        <div
+          ref={socialsRef}
+          className="flex flex-wrap gap-6 md:gap-8 mb-24 md:mb-32"
+        >
           {[
-            { label: "GitHub", href: "#" },
-            { label: "LinkedIn", href: "#" },
-            { label: "Twitter/X", href: "#" },
+            { label: "GitHub", href: "https://github.com/DestinySolomon" },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/destiny-okagbuo/" },
+            { label: "Twitter/X", href: "https://x.com/Destiny_Okagbuo" },
           ].map((link) => (
             <a
               key={link.label}
@@ -214,17 +227,30 @@ export default function ContactSection() {
         </div>
       </div>
 
+      {/* Back to Top Button */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className={`fixed bottom-8 right-8 w-12 h-12 flex items-center justify-center bg-editorial-amber text-editorial-bg rounded-full transition-all duration-300 z-40 ${
+          showBackToTop
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        aria-label="Back to top"
+      >
+        <i className="ri-arrow-up-line text-lg" />
+      </button>
+
       {/* Footer */}
       <footer className="absolute bottom-0 left-0 w-full px-6 md:px-10 lg:px-16 py-6 border-t border-editorial-amber/10">
         <div className="w-full max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-mono text-xs text-editorial-text/30 tracking-wider">
-            © 2025 ThothTech
-          </span>
-          <span className="font-mono text-xs text-editorial-text/30 tracking-wider">
+          <span className="font-mono text-xs text-editorial-text/30 tracking-wider order-1 sm:order-2">
             CEO: Destiny Solomon Okagbuo
           </span>
-          <span className="font-mono text-xs text-editorial-text/30 tracking-wider">
+          <span className="font-mono text-xs text-editorial-text/30 tracking-wider order-2 sm:order-3">
             Port Harcourt, Nigeria
+          </span>
+          <span className="font-mono text-xs text-editorial-text/30 tracking-wider order-3 sm:order-1">
+            © 2026 ThothTech
           </span>
         </div>
       </footer>

@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
+import destinyImage from "../../../assets/destiny_okagbuo.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const aboutPhotoUrl =
-  "https://readdy.ai/api/search-image?query=Professional%20portrait%20of%20a%20confident%20young%20African%20male%20developer%20in%20a%20modern%20minimalist%20studio%20setting%2C%20wearing%20a%20dark%20navy%20blazer%20over%20a%20black%20shirt%2C%20warm%20amber%20lighting%20from%20the%20left%20side%2C%20subtle%20editorial%20photography%20style%2C%20dark%20charcoal%20background%2C%20sharp%20focus%20on%20face%2C%20professional%20headshot%20composition&width=280&height=370&seq=about-portrait-1&orientation=portrait";
+const aboutPhotoUrl = destinyImage;
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
