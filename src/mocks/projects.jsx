@@ -28,7 +28,7 @@ export const projects = [
 
   {
     id: 3,
-    name: "Quadratic",
+    name: "QuadraticMaster",
     role: "Backend",
     stack: ["Python", "React.js", "Analytics", "SEO Optimization"],
     outcome: "100k monthly impressions, 12% CTR average",
