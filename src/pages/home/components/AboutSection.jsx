@@ -159,7 +159,7 @@ export default function AboutSection() {
         >
           <div className="stat-item">
             <span className="font-display text-5xl md:text-6xl lg:text-7xl text-editorial-amber leading-none">
-              2+
+              3+
             </span>
             <p className="font-mono text-xs text-editorial-text/50 mt-2 tracking-wider uppercase">
               Projects Delivered
@@ -168,7 +168,7 @@ export default function AboutSection() {
           <div className="h-px w-full sm:w-px sm:h-20 bg-editorial-amber/20" />
           <div className="stat-item">
             <span className="font-display text-5xl md:text-6xl lg:text-7xl text-editorial-amber leading-none">
-              1+
+              2+
             </span>
             <p className="font-mono text-xs text-editorial-text/50 mt-2 tracking-wider uppercase">
               Years of Experience
@@ -177,7 +177,7 @@ export default function AboutSection() {
           <div className="h-px w-full sm:w-px sm:h-20 bg-editorial-amber/20" />
           <div className="stat-item">
             <span className="font-display text-5xl md:text-6xl lg:text-7xl text-editorial-amber leading-none">
-              2+
+              3+
             </span>
             <p className="font-mono text-xs text-editorial-text/50 mt-2 tracking-wider uppercase">
               Happy Clients
