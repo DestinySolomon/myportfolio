@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "../../../mocks/projects";
+import projectPlaceholder from "../../../assets/destiny_okagbuo.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,14 +83,13 @@ export default function ProjectsSection() {
             </span>
           </div>
           <h2
-            className="font-display text-editorial-text leading-none tracking-wide"
-            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            className="font-display text-editorial-text leading-[0.9] tracking-wide mb-8"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
             SELECTED WORK
           </h2>
         </div>
       </div>
-
       {/* Progress bar */}
       <div className="w-full h-[2px] bg-editorial-chrome">
         <div
@@ -105,55 +105,70 @@ export default function ProjectsSection() {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`project-panel ${project.bgClass} p-8 md:p-12 border border-editorial-amber/10`}
-              style={{ opacity: 0, transform: "translateY(60px)" }}
+              className={`project-panel relative overflow-hidden rounded-lg border border-editorial-amber/10`}
+              style={{
+                opacity: 0,
+                transform: "translateY(60px)",
+                backgroundImage: `url(${project.image || projectPlaceholder})`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                minHeight: "320px",
+              }}
             >
-              <span className="font-mono text-xs text-editorial-amber tracking-wider mb-4 block">
-                PROJECT 0{index + 1}
-              </span>
-              <h3
-                className="font-display text-editorial-text leading-[0.95] tracking-wide mb-4"
-                style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
-              >
-                {project.name}
-              </h3>
-              <p className="font-mono text-sm text-editorial-amber mb-6 tracking-wider">
-                {project.role}
-              </p>
-              <p className="font-body text-lg text-editorial-text/70 leading-relaxed mb-8">
-                {project.description}
-              </p>
-
-              {/* Tech stack */}
-              <div className="flex flex-wrap gap-3 mb-8">
-                {project.stack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="font-mono text-xs text-editorial-text/50 border border-editorial-text/20 px-3 py-1"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* Outcome */}
-              <div className="border-l-2 border-editorial-amber pl-4 mb-8">
-                <p className="font-body text-lg text-editorial-text italic">
-                  {project.outcome}
-                </p>
-              </div>
-
-              {/* CTA */}
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 font-mono text-sm text-editorial-amber tracking-wider group cursor-pointer"
-                onClick={(e) => e.preventDefault()}
-              >
-                <span>View Project</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-2">
-                  →
+              <div className="absolute inset-0 bg-black/70" />
+              <div className="relative z-10 p-8 md:p-12">
+                <span className="font-mono text-xs text-editorial-amber tracking-wider mb-4 block">
+                  PROJECT 0{index + 1}
                 </span>
-              </a>
+                <h3
+                  className="font-display text-editorial-text leading-[0.95] tracking-wide mb-4"
+                  style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
+                >
+                  {project.name}
+                </h3>
+                <p className="font-mono text-sm text-editorial-amber mb-6 tracking-wider">
+                  {project.role}
+                </p>
+                <p className="font-body text-lg text-editorial-text/70 leading-relaxed mb-8">
+                  {project.description}
+                </p>
+
+                {/* Tech stack */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {project.stack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="font-mono text-xs text-editorial-text/50 border border-editorial-text/20 px-3 py-1"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Outcome */}
+                <div className="border-l-2 border-editorial-amber pl-4 mb-8">
+                  <p className="font-body text-lg text-editorial-text italic">
+                    {project.outcome}
+                  </p>
+                </div>
+
+                {/* CTA */}
+                <a
+                  href={project.url || "#"}
+                  target={project.url ? "_blank" : undefined}
+                  rel={project.url ? "noopener noreferrer" : undefined}
+                  className="inline-flex items-center gap-2 font-mono text-sm text-editorial-amber tracking-wider group cursor-pointer"
+                  onClick={(e) => {
+                    if (!project.url) e.preventDefault();
+                  }}
+                >
+                  <span>View Project</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-2">
+                    →
+                  </span>
+                </a>
+              </div>
             </div>
           ))}
         </div>

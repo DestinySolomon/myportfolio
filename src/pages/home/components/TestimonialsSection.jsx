@@ -74,7 +74,7 @@ export default function TestimonialsSection() {
           </div>
           <h2
             className="font-display text-editorial-text leading-none tracking-wide mb-4"
-            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
           >
             WHAT CLIENTS SAY
           </h2>

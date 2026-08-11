@@ -106,14 +106,13 @@ export default function NicheSection() {
             </span>
           </div>
           <h2
-            className="font-display text-editorial-text leading-none tracking-wide"
-            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            className="font-display text-editorial-text leading-[0.9] tracking-wide"
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
             WHO WE BUILD FOR
           </h2>
         </div>
       </div>
-
       {/* Split panels */}
       <div className="flex flex-col lg:flex-row min-h-[80vh]">
         {/* Left — NGO */}

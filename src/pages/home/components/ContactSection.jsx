@@ -138,7 +138,7 @@ export default function ContactSection() {
         <h2
           ref={headingRef}
           className="font-display text-editorial-text leading-[0.9] tracking-wide mb-8"
-          style={{ fontSize: "clamp(3rem, 10vw, 9rem)" }}
+          style={{ fontSize: "clamp(2.5rem, 6vw, 6rem)" }}
         >
           LET'S BUILD
           <br />
@@ -212,14 +212,18 @@ export default function ContactSection() {
         >
           {[
             { label: "GitHub", href: "https://github.com/DestinySolomon" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/destiny-okagbuo/" },
+            {
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/in/destiny-okagbuo/",
+            },
             { label: "Twitter/X", href: "https://x.com/Destiny_Okagbuo" },
           ].map((link) => (
             <a
               key={link.label}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-sm text-editorial-text/50 tracking-wider transition-colors duration-300 hover:text-editorial-amber cursor-pointer whitespace-nowrap"
-              onClick={(e) => e.preventDefault()}
             >
               {link.label}
             </a>

@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stackItems = ["Laravel", "React.js", "JavaScript", "HTML", "CSS"];
+const stackItems = ["Laravel", "Python","React.js", "JavaScript", "HTML", "CSS", "Tailwind", "Bootstrap", "MySQL", "PostgreSQL", "Git", "GitHub", "Figma"];
 
 export default function TechStackSection() {
   const sectionRef = useRef(null);
@@ -93,7 +93,7 @@ export default function TechStackSection() {
         <div ref={headingRef} className="mb-12 md:mb-16">
           <h2
             className="font-display text-editorial-text leading-none tracking-wide"
-            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
           >
             TOOLS OF THE TRADE
           </h2>

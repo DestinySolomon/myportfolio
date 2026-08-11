@@ -74,7 +74,7 @@ export default function Navigation() {
           }}
           className="pointer-events-auto cursor-pointer inline-flex items-center"
         >
-          <img src={thothLogo} alt="ThothTech" className="h-6 logo" />
+          <img src={thothLogo} alt="ThothTech" className="h-10 logo" />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (

@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { certifications } from "../../../mocks/certifications";
+import certificateImage from "../../../assets/certificate.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,7 +76,7 @@ export default function CertificationsSection() {
           </div>
           <h2
             className="font-display text-editorial-text leading-none tracking-wide mb-4"
-            style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}
+            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
           >
             CREDENTIALS
           </h2>
@@ -89,29 +90,27 @@ export default function CertificationsSection() {
           {certifications.map((cert) => (
             <div
               key={cert.id}
-              className="cert-row border-b border-editorial-amber/30 py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-2 md:gap-0"
+              className="cert-row border-b border-editorial-amber/30 py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-6"
             >
-              {/* Diamond marker */}
-              <div className="hidden md:block w-8 flex-shrink-0">
-                <span className="text-editorial-amber text-lg">◆</span>
+              {/* Thumbnail */}
+              <div className="w-full md:w-[260px] flex-shrink-0">
+                <div className="relative overflow-hidden rounded-[2rem] border border-editorial-amber/20 bg-editorial-chrome h-48 md:h-40">
+                  <img
+                    src={cert.image || certificateImage}
+                    alt={`${cert.name} certificate`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
 
-              {/* Certificate name */}
+              {/* Certificate details */}
               <div className="flex-1 md:px-4">
-                <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-editorial-text">
+                <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-editorial-text mb-3">
                   {cert.name}
                 </h3>
-              </div>
-
-              {/* Institution */}
-              <div className="md:w-[280px] lg:w-[320px] flex-shrink-0 md:px-4">
-                <p className="font-body text-lg md:text-xl text-editorial-text/60 italic">
+                <p className="font-body text-lg md:text-xl text-editorial-text/60 italic mb-4">
                   {cert.institution}
                 </p>
-              </div>
-
-              {/* Year */}
-              <div className="md:w-[100px] lg:w-[120px] flex-shrink-0 md:text-right">
                 <span className="font-mono text-sm text-editorial-amber tracking-wider">
                   {cert.year}
                 </span>

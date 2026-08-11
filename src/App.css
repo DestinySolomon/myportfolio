@@ -17,6 +17,13 @@
   }
 }
 
+/* Prevent horizontal overflow across the site */
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+
 .hero {
   position: relative;
 
@@ -167,7 +174,7 @@
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: -4.5px;
     border: 5px solid transparent;

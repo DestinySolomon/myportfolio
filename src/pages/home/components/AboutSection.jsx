@@ -96,7 +96,7 @@ export default function AboutSection() {
       <div
         ref={bigNumRef}
         className="absolute top-1/2 left-0 -translate-y-1/2 font-display text-editorial-text/[0.03] select-none pointer-events-none leading-none"
-        style={{ fontSize: "clamp(10rem, 25vw, 30rem)" }}
+        style={{ fontSize: "clamp(5rem, 18vw, 10rem)" }}
       >
         01
       </div>
@@ -138,7 +138,7 @@ export default function AboutSection() {
             <p className="about-text font-body text-lg md:text-xl lg:text-2xl text-editorial-text/90 leading-relaxed mb-6">
               Destiny Solomon Okagbuo is a fullstack web developer with a
               builder's mindset and a strategist's eye. He engineers digital
-              infrastructure — not just websites — for organizations that demand
+              infrastructure, not just websites, for organizations that demand
               measurable results.
             </p>
             <p className="about-text font-body text-lg md:text-xl lg:text-2xl text-editorial-text/90 leading-relaxed mb-6">
@@ -147,7 +147,7 @@ export default function AboutSection() {
               convert their digital presence across Nigeria and beyond.
             </p>
             <p className="about-text font-body text-lg md:text-xl lg:text-2xl text-editorial-text/60 leading-relaxed italic">
-              "We don't just build websites — we engineer digital presence."
+              "We don't just build websites, we engineer digital presence."
             </p>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function AboutSection() {
         >
           <div className="stat-item">
             <span className="font-display text-5xl md:text-6xl lg:text-7xl text-editorial-amber leading-none">
-              24+
+              2+
             </span>
             <p className="font-mono text-xs text-editorial-text/50 mt-2 tracking-wider uppercase">
               Projects Delivered
@@ -168,7 +168,7 @@ export default function AboutSection() {
           <div className="h-px w-full sm:w-px sm:h-20 bg-editorial-amber/20" />
           <div className="stat-item">
             <span className="font-display text-5xl md:text-6xl lg:text-7xl text-editorial-amber leading-none">
-              5+
+              1+
             </span>
             <p className="font-mono text-xs text-editorial-text/50 mt-2 tracking-wider uppercase">
               Years of Experience
@@ -177,7 +177,7 @@ export default function AboutSection() {
           <div className="h-px w-full sm:w-px sm:h-20 bg-editorial-amber/20" />
           <div className="stat-item">
             <span className="font-display text-5xl md:text-6xl lg:text-7xl text-editorial-amber leading-none">
-              15+
+              2+
             </span>
             <p className="font-mono text-xs text-editorial-text/50 mt-2 tracking-wider uppercase">
               Happy Clients

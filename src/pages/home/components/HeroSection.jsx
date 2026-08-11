@@ -148,7 +148,7 @@ export default function HeroSection() {
           <div
             ref={nameRef}
             className="font-display text-editorial-text leading-[0.9] tracking-wide"
-            style={{ fontSize: "clamp(3.5rem, 14vw, 12rem)" }}
+            style={{ fontSize: "clamp(2.75rem, 6.5vw, 6.5rem)" }}
           >
             {renderTypedName()}
             {typedChars < FULL_NAME.length && (
